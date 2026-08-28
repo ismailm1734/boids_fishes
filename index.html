@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div id="ui-layer">
+            <div id="start-screen" class="screen">
+                <h1>SHOAL</h1>
+                <p>Guide your school of fish through the ocean.</p>
+                <p>Use your mouse to shine a light.</p>
+                <p>Keep them together. Protect them from the dark.</p>
+                <button id="start-btn">Start Game</button>
+            </div>
+
+            <div id="hud" class="hidden">
+                <div class="hud-item">Fish: <span id="fish-count">0</span></div>
+                <div class="hud-item">Light Intensity: <span id="light-intensity">0%</span></div>
+                <div class="hud-item">Time: <span id="time-elapsed">0</span>s</div>
+            </div>
+
+            <div id="game-over-screen" class="screen hidden">
+                <h1 id="game-over-title">Game Over</h1>
+                <p id="game-over-msg">Your school was wiped out.</p>
+                <p>Time survived: <span id="final-time">0</span>s</p>
+                <button id="restart-btn">Restart</button>
+            </div>
+
+            <div id="win-screen" class="screen hidden">
+                <h1>Safe!</h1>
+                <p>You guided the school to safety.</p>
+                <p>Fish survived: <span id="final-fish">0</span></p>
+                <p>Time: <span id="win-time">0</span>s</p>
+                <button id="win-restart-btn">Play Again</button>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
