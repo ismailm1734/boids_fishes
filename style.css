@@ -35,16 +35,19 @@ canvas {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 10;
 }
 
 .screen {
-    background: rgba(2, 12, 27, 0.85);
+    background: rgba(2, 12, 27, 0.95);
     padding: 40px;
     border-radius: 10px;
     text-align: center;
     border: 1px solid #1a5c7a;
     pointer-events: auto; /* Re-enable clicks for buttons */
     box-shadow: 0 0 20px rgba(0, 200, 255, 0.2);
+    z-index: 20;
+    backdrop-filter: blur(5px);
 }
 
 h1 {
@@ -81,11 +84,12 @@ button:active {
     left: 20px;
     display: flex;
     gap: 20px;
-    background: rgba(2, 12, 27, 0.5);
+    background: rgba(2, 12, 27, 0.8);
     padding: 10px 20px;
     border-radius: 5px;
     border: 1px solid rgba(26, 92, 122, 0.5);
     pointer-events: none;
+    z-index: 15;
 }
 
 .hud-item {
