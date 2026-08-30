@@ -668,6 +668,7 @@ function checkWinLose() {
     // Check Lose Condition
     if (gameState.boids.length === 0) {
         gameState.state = 'lose';
+        canvas.style.cursor = 'default';
         document.getElementById('hud').classList.add('hidden');
         document.getElementById('game-over-screen').classList.remove('hidden');
         document.getElementById('final-time').textContent = gameState.elapsedTime;
@@ -683,6 +684,7 @@ function checkWinLose() {
 
     if (Vector.dist(centerOfMass, gameState.goalPos) < CONFIG.GOAL_RADIUS) {
         gameState.state = 'win';
+        canvas.style.cursor = 'default';
         document.getElementById('hud').classList.add('hidden');
         document.getElementById('win-screen').classList.remove('hidden');
         document.getElementById('final-fish').textContent = gameState.boids.length;
@@ -759,18 +761,25 @@ function animate() {
 }
 
 window.addEventListener('load', () => {
+    // --- CRITICAL: set canvas size immediately so it's not 0×0 / 300×150 ---
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
     document.getElementById('start-btn').addEventListener('click', () => {
         document.getElementById('start-screen').classList.add('hidden');
+        canvas.style.cursor = 'none'; // hide cursor during gameplay
         init();
     });
 
     document.getElementById('restart-btn').addEventListener('click', () => {
         document.getElementById('game-over-screen').classList.add('hidden');
+        canvas.style.cursor = 'none';
         init();
     });
 
     document.getElementById('win-restart-btn').addEventListener('click', () => {
         document.getElementById('win-screen').classList.add('hidden');
+        canvas.style.cursor = 'none';
         init();
     });
 
@@ -793,6 +802,12 @@ window.addEventListener('load', () => {
             gameState.targetLightPos.y = e.touches[0].clientY + gameState.cameraOffset.y;
         }
     }, {passive: true});
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
 
     // Start drawing the background immediately
     requestAnimationFrame(animate);

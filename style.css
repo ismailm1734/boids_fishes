@@ -21,7 +21,7 @@ canvas {
     height: 100%;
     /* Ocean gradient fallback, mostly drawn in canvas */
     background: radial-gradient(circle at center, #0a2e3f 0%, #020c1b 100%);
-    cursor: none; /* Hide default cursor to use light */
+    /* cursor is set to 'none' via JS only during gameplay */
 }
 
 #ui-layer {
