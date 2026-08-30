@@ -1,3 +1,7 @@
+/* ============================================
+   SHOAL — Styles
+   ============================================ */
+
 body, html {
     margin: 0;
     padding: 0;
@@ -19,78 +23,184 @@ canvas {
     display: block;
     width: 100%;
     height: 100%;
-    /* Ocean gradient fallback, mostly drawn in canvas */
     background: radial-gradient(circle at center, #0a2e3f 0%, #020c1b 100%);
-    /* cursor is set to 'none' via JS only during gameplay */
 }
 
+/* ---- UI Layer ---- */
 #ui-layer {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Let clicks pass through to canvas when playing */
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+/* ---- Screens (start, game-over, win, wave-complete) ---- */
 .screen {
-    background: rgba(2, 12, 27, 0.85);
-    padding: 40px;
-    border-radius: 10px;
+    background: rgba(2, 12, 27, 0.88);
+    padding: 40px 50px;
+    border-radius: 12px;
     text-align: center;
-    border: 1px solid #1a5c7a;
-    pointer-events: auto; /* Re-enable clicks for buttons */
-    box-shadow: 0 0 20px rgba(0, 200, 255, 0.2);
+    border: 1px solid rgba(68, 221, 255, 0.3);
+    pointer-events: auto;
+    box-shadow: 0 0 30px rgba(0, 200, 255, 0.15);
+    max-width: 450px;
+    animation: fadeIn 0.4s ease-out;
 }
 
 h1 {
     margin-top: 0;
     font-size: 3em;
     color: #4df;
-    text-shadow: 0 0 10px rgba(68, 221, 255, 0.5);
-    letter-spacing: 2px;
+    text-shadow: 0 0 15px rgba(68, 221, 255, 0.5);
+    letter-spacing: 3px;
+}
+
+.subtitle {
+    font-size: 1.1em;
+    color: #8ab;
+    margin-bottom: 20px;
+}
+
+.instructions {
+    text-align: left;
+    display: inline-block;
+    margin: 15px 0;
+}
+
+.instructions p {
+    margin: 8px 0;
+    font-size: 1.05em;
+    color: #9bc;
 }
 
 button {
     margin-top: 20px;
-    padding: 10px 20px;
+    padding: 12px 28px;
     font-size: 1.2em;
-    background-color: #1a5c7a;
+    background: linear-gradient(135deg, #1a5c7a, #2288aa);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
 }
 
 button:hover {
-    background-color: #2a8cba;
+    background: linear-gradient(135deg, #2288aa, #33bbdd);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 200, 255, 0.3);
 }
 
 button:active {
-    transform: scale(0.95);
+    transform: translateY(0) scale(0.97);
 }
 
+.high-score-text {
+    margin-top: 15px;
+    font-size: 0.9em;
+    color: #667;
+}
+
+.high-score-text span {
+    color: #ffdd44;
+    font-weight: bold;
+}
+
+/* ---- Stats ---- */
+.stats {
+    margin: 20px 0;
+    text-align: left;
+    display: inline-block;
+}
+
+.stats p {
+    margin: 6px 0;
+    font-size: 1.05em;
+    color: #9bc;
+}
+
+.stat-value {
+    font-weight: bold;
+    color: #fff;
+}
+
+.stat-value.highlight {
+    color: #4df;
+    font-size: 1.2em;
+}
+
+.score-total {
+    margin-top: 12px !important;
+    padding-top: 10px;
+    border-top: 1px solid rgba(68, 221, 255, 0.2);
+}
+
+.next-wave-hint {
+    font-size: 0.95em;
+    color: #ff9944;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* ---- Game Over & Win Titles ---- */
+.game-over-title {
+    color: #ff5555 !important;
+    text-shadow: 0 0 15px rgba(255, 50, 50, 0.5) !important;
+}
+
+.game-over-msg {
+    color: #aa7777;
+}
+
+.win-title {
+    color: #ffdd44 !important;
+    text-shadow: 0 0 20px rgba(255, 220, 68, 0.5) !important;
+}
+
+/* ---- HUD ---- */
 #hud {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 0; left: 0;
+    width: 100%;
     display: flex;
-    gap: 20px;
-    background: rgba(2, 12, 27, 0.5);
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: 1px solid rgba(26, 92, 122, 0.5);
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 15px 20px;
+    box-sizing: border-box;
     pointer-events: none;
 }
 
+.hud-left, .hud-right {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: rgba(2, 12, 27, 0.5);
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(68, 221, 255, 0.15);
+}
+
+.hud-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    background: rgba(2, 12, 27, 0.5);
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: 1px solid rgba(68, 221, 255, 0.15);
+}
+
 .hud-item {
-    font-size: 1.2em;
-    color: #bbf;
+    font-size: 1.1em;
+    color: #8ab;
 }
 
 .hud-item span {
@@ -98,6 +208,96 @@ button:active {
     color: white;
 }
 
+#wave-indicator {
+    font-size: 1em;
+    color: #8ab;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#wave-indicator span {
+    font-weight: bold;
+    color: #4df;
+}
+
+#wave-timer-display {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #fff;
+}
+
+#combo-display {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #ff8844;
+    text-shadow: 0 0 8px rgba(255, 136, 68, 0.5);
+    animation: comboPulse 0.5s ease-in-out infinite alternate;
+}
+
+/* ---- Wave Overlay ---- */
+#wave-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    z-index: 10;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.wave-title-text {
+    font-size: 5em;
+    color: #4df;
+    text-shadow: 0 0 30px rgba(68, 221, 255, 0.6), 0 0 60px rgba(68, 221, 255, 0.3);
+    letter-spacing: 8px;
+    animation: waveTitle 3s ease-in-out;
+    margin: 0;
+}
+
+.wave-subtitle-text {
+    font-size: 1.4em;
+    color: #ff9944;
+    text-shadow: 0 0 10px rgba(255, 153, 68, 0.4);
+    margin-top: 10px;
+    animation: fadeIn 0.8s ease-out 0.5s both;
+}
+
+/* ---- Animations ---- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes waveTitle {
+    0% { opacity: 0; transform: scale(0.5); letter-spacing: 30px; }
+    20% { opacity: 1; transform: scale(1.1); letter-spacing: 10px; }
+    30% { transform: scale(1); letter-spacing: 8px; }
+    80% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+@keyframes comboPulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+/* ---- Utility ---- */
 .hidden {
     display: none !important;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+    .screen {
+        padding: 25px 30px;
+        max-width: 90%;
+    }
+    h1 { font-size: 2.2em; }
+    .wave-title-text { font-size: 3em; }
+    .hud-item { font-size: 0.9em; }
+    #wave-timer-display { font-size: 1.3em; }
+    button { padding: 10px 20px; font-size: 1em; }
 }
