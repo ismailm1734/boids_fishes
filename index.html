@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shoal — Karanlık Sularda Hayatta Kalma</title>
+    <title>Shoal — Survival in Dark Waters</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,15 +14,15 @@
             <!-- Start Screen -->
             <div id="start-screen" class="screen">
                 <h1>SHOAL</h1>
-                <p class="subtitle">Karanlık Sularda Hayatta Kalma</p>
+                <p class="subtitle">Survival in Dark Waters</p>
                 <div class="instructions">
-                    <p>🔦 Farenle ışığı yönlendir</p>
-                    <p>🐟 Sürüyü bir arada tut</p>
-                    <p>🦈 Yırtıcılardan koru</p>
-                    <p>🌊 5 dalgadan sağ çık</p>
+                    <p>🔦 Steer the light with your mouse</p>
+                    <p>🐟 Keep the school together</p>
+                    <p>🦈 Protect them from predators</p>
+                    <p>🌊 Survive 5 waves</p>
                 </div>
-                <button id="start-btn">Oyuna Başla</button>
-                <p class="high-score-text">En Yüksek Skor: <span id="high-score">0</span></p>
+                <button id="start-btn">Start Game</button>
+                <p class="high-score-text">High Score: <span id="high-score">0</span></p>
             </div>
 
             <!-- HUD -->
@@ -32,7 +32,7 @@
                     <div class="hud-item">💡 <span id="light-intensity">0%</span></div>
                 </div>
                 <div class="hud-center">
-                    <div id="wave-indicator">Dalga <span id="wave-number">1</span>/5</div>
+                    <div id="wave-indicator">Wave <span id="wave-number">1</span>/5</div>
                     <div id="wave-timer-display"><span id="time-remaining">0</span>s</div>
                 </div>
                 <div class="hud-right">
@@ -45,44 +45,44 @@
 
             <!-- Wave Intro Overlay -->
             <div id="wave-overlay" class="hidden">
-                <h1 id="wave-title" class="wave-title-text">DALGA 1</h1>
-                <p id="wave-subtitle" class="wave-subtitle-text">Hazır ol...</p>
+                <h1 id="wave-title" class="wave-title-text">WAVE 1</h1>
+                <p id="wave-subtitle" class="wave-subtitle-text">Get ready...</p>
             </div>
 
             <!-- Wave Complete Screen -->
             <div id="wave-complete-screen" class="screen hidden">
-                <h1 id="wave-complete-title">Dalga Tamamlandı!</h1>
+                <h1 id="wave-complete-title">Wave Complete!</h1>
                 <div class="stats">
-                    <p>Hayatta kalan: <span id="wave-fish-survived" class="stat-value">0</span> balık</p>
-                    <p>Toplanan yem: <span id="wave-food-collected" class="stat-value">0</span></p>
-                    <p>Dalga bonusu: +<span id="wave-bonus" class="stat-value">500</span></p>
-                    <p class="score-total">Toplam Skor: <span id="wave-total-score" class="stat-value highlight">0</span></p>
+                    <p>Fish survived: <span id="wave-fish-survived" class="stat-value">0</span></p>
+                    <p>Food collected: <span id="wave-food-collected" class="stat-value">0</span></p>
+                    <p>Wave bonus: +<span id="wave-bonus" class="stat-value">500</span></p>
+                    <p class="score-total">Total Score: <span id="wave-total-score" class="stat-value highlight">0</span></p>
                 </div>
-                <p class="next-wave-hint" id="next-wave-hint">Sonraki dalga yaklaşıyor...</p>
+                <p class="next-wave-hint" id="next-wave-hint">Next wave incoming...</p>
             </div>
 
             <!-- Game Over Screen -->
             <div id="game-over-screen" class="screen hidden">
                 <h1 class="game-over-title">💀 Game Over</h1>
-                <p class="game-over-msg">Sürün yok oldu.</p>
+                <p class="game-over-msg">Your school is gone.</p>
                 <div class="stats">
-                    <p>Ulaşılan dalga: <span id="final-wave" class="stat-value">1</span>/5</p>
-                    <p class="score-total">Skor: <span id="final-score" class="stat-value highlight">0</span></p>
+                    <p>Wave reached: <span id="final-wave" class="stat-value">1</span>/5</p>
+                    <p class="score-total">Score: <span id="final-score" class="stat-value highlight">0</span></p>
                 </div>
-                <button id="restart-btn">Tekrar Dene</button>
+                <button id="restart-btn">Try Again</button>
             </div>
 
             <!-- Win Screen -->
             <div id="win-screen" class="screen hidden">
-                <h1 class="win-title">🏆 ZAFER!</h1>
-                <p>Sürüyü tüm tehlikelerden korudun!</p>
+                <h1 class="win-title">🏆 VICTORY!</h1>
+                <p>You guided the school through every danger!</p>
                 <div class="stats">
-                    <p>Hayatta kalan: <span id="win-fish" class="stat-value">0</span> balık</p>
-                    <p>Toplam yem: <span id="win-food" class="stat-value">0</span></p>
-                    <p>En yüksek combo: x<span id="win-combo" class="stat-value">1</span></p>
-                    <p class="score-total">Final Skor: <span id="win-score" class="stat-value highlight">0</span></p>
+                    <p>Fish survived: <span id="win-fish" class="stat-value">0</span></p>
+                    <p>Total food: <span id="win-food" class="stat-value">0</span></p>
+                    <p>Best combo: x<span id="win-combo" class="stat-value">1</span></p>
+                    <p class="score-total">Final Score: <span id="win-score" class="stat-value highlight">0</span></p>
                 </div>
-                <button id="win-restart-btn">Tekrar Oyna</button>
+                <button id="win-restart-btn">Play Again</button>
             </div>
 
         </div>

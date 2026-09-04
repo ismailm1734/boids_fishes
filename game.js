@@ -59,10 +59,10 @@ const CONFIG = {
 };
 
 const WAVES = [
-    { duration: 45, sharks: 2, anglers: 0, jellies: 0, currents: 0, whirlpools: 0, hint: 'Akıntılar yaklaşıyor...' },
-    { duration: 50, sharks: 3, anglers: 0, jellies: 0, currents: 2, whirlpools: 0, hint: 'Karanlıkta sahte bir ışık...' },
-    { duration: 55, sharks: 3, anglers: 1, jellies: 0, currents: 2, whirlpools: 1, hint: 'Kaos artıyor...' },
-    { duration: 60, sharks: 4, anglers: 2, jellies: 0, currents: 3, whirlpools: 2, hint: 'Son dalga geliyor!' },
+    { duration: 45, sharks: 2, anglers: 0, jellies: 0, currents: 0, whirlpools: 0, hint: 'Currents are closing in...' },
+    { duration: 50, sharks: 3, anglers: 0, jellies: 0, currents: 2, whirlpools: 0, hint: 'A false light in the dark...' },
+    { duration: 55, sharks: 3, anglers: 1, jellies: 0, currents: 2, whirlpools: 1, hint: 'The chaos is rising...' },
+    { duration: 60, sharks: 4, anglers: 2, jellies: 0, currents: 3, whirlpools: 2, hint: 'The final wave is coming!' },
     { duration: 75, sharks: 5, anglers: 2, jellies: 4, currents: 4, whirlpools: 3, hint: '' },
 ];
 
@@ -1223,8 +1223,8 @@ function startWave(index) {
     }
 
     // Show wave overlay
-    document.getElementById('wave-title').textContent = `DALGA ${index + 1}`;
-    document.getElementById('wave-subtitle').textContent = WAVES[index].hint || 'Hayatta kal!';
+    document.getElementById('wave-title').textContent = `WAVE ${index + 1}`;
+    document.getElementById('wave-subtitle').textContent = WAVES[index].hint || 'Survive!';
     showEl('wave-overlay');
     hideEl('wave-complete-screen');
 
@@ -1370,8 +1370,8 @@ function showWaveComplete() {
     document.getElementById('wave-bonus').textContent = waveBonus;
     document.getElementById('wave-total-score').textContent = gameState.score;
     const nextIdx = gameState.currentWave + 1;
-    document.getElementById('next-wave-hint').textContent = nextIdx < WAVES.length ? WAVES[gameState.currentWave].hint : 'Zafer yakın!';
-    document.getElementById('wave-complete-title').textContent = `Dalga ${gameState.currentWave + 1} Tamamlandı!`;
+    document.getElementById('next-wave-hint').textContent = nextIdx < WAVES.length ? WAVES[gameState.currentWave].hint : 'Victory is close!';
+    document.getElementById('wave-complete-title').textContent = `Wave ${gameState.currentWave + 1} Complete!`;
 
     showEl('wave-complete-screen');
     hideEl('wave-overlay');
